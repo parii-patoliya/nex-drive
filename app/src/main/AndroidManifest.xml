@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NexDrive">
         <activity
+            android:name=".activities.AppointmentBookingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.VehicleEntryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CustomerRegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ReceptionistDashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
