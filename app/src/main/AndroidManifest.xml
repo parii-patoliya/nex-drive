@@ -21,10 +21,10 @@
             android:name=".activities.CustomerRegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.ReceptionistDashboardActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.ReceptionistDashboardActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
