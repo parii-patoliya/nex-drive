@@ -4,158 +4,327 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header -->
+        <!-- ================= HEADER ================= -->
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@color/black"
-            android:gravity="center"
-            android:text="Receptionist Dashboard"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textStyle="bold"/>
+            android:layout_height="90dp"
+            android:background="#1F1E24"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
 
-        <!-- Welcome -->
+            <!-- Left Logo -->
 
-        <TextView
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/car" />
+
+            <!-- NexDrive Text -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/imgLogo"
+                android:layout_marginStart="12dp"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NEXDRIVE"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RECEPTIONIST"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <!-- Logout -->
+
+            <ImageView
+                android:id="@+id/imgLogout"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/logout" />
+
+            <!-- Profile -->
+
+            <ImageView
+                android:id="@+id/imgProfile"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_toStartOf="@id/imgLogout"
+                android:layout_marginEnd="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/profile" />
+
+            <!-- Notification -->
+
+            <FrameLayout
+                android:id="@+id/layoutNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/imgProfile"
+                android:layout_marginEnd="20dp"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/imgNotification"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/bell"/>
+
+                <TextView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="end|top"
+                    android:background="@drawable/badge_background"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp"
+                    android:textStyle="bold"/>
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+        <!-- ================= WELCOME CARD ================= -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome Receptionist"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_black"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_margin="18dp"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select an option below"
-            android:textColor="#666666"
-            android:textSize="14sp"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="18dp">
 
-        <!-- Customer Registration -->
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/receptionist"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Welcome, Receptionist"
+                        android:textColor="@color/text_black"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Manage customer and appointment details"
+                        android:textColor="@color/text_dark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- ================= CUSTOMER ================= -->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardCustomer"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="@color/lavender">
+            android:layout_height="110dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="18dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@android:drawable/ic_menu_add"/>
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/customer"/>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Customer Registration"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginStart="18dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Customer Registration"
+                        android:textColor="@color/text_black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Register new customers"
+                        android:textColor="@color/text_dark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Vehicle Entry -->
+        <!-- ================= VEHICLE ================= -->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardVehicle"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="@color/lavender">
+            android:layout_height="110dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="18dp"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="18dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@android:drawable/ic_menu_compass"/>
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/vehicle"/>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vehicle Entry"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginStart="18dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vehicle Entry"
+                        android:textColor="@color/text_black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add vehicle details"
+                        android:textColor="@color/text_dark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Appointment -->
+        <!-- ================= APPOINTMENT ================= -->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardAppointment"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="@color/lavender">
+            android:layout_height="110dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="18dp"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="18dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@android:drawable/ic_menu_my_calendar"/>
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/booking"/>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Appointment Booking"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginStart="18dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Appointment Booking"
+                        android:textColor="@color/text_black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Book new appointments"
+                        android:textColor="@color/text_dark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Logout Button -->
+        <!-- ================= LOGOUT ================= -->
 
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_margin="20dp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/button_bg"
             android:text="Logout"
-            android:textColor="@color/white"/>
+            android:textAllCaps="false"
+            android:textColor="@color/text_white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

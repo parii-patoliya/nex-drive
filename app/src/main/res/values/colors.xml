@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Basic Colors -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="lavender">#E6DDEB</color>
-    <color name="text_black">#212121</color>
+
+    <!-- Screen -->
+    <color name="background">#FFFFFF</color>
+
+    <!-- Header -->
+    <color name="header_bg">#000000</color>
+
+    <!-- Card -->
+    <color name="card_bg">#FFFFFF</color>
+
+    <!-- Button -->
+    <color name="button_bg">#000000</color>
+
+    <!-- Text -->
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_black">#111111</color>
+    <color name="text_dark">#444444</color>
+    <color name="text_hint">#555555</color>
+
+    <!-- Border -->
+    <color name="border">#D9D9D9</color>
+
+    <!-- Shadow -->
+    <color name="shadow">#20000000</color>
+
 </resources>

@@ -1,10 +1,303 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.VehicleEntryActivity">
+    android:background="@color/background">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@color/header_bg">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/outline_arrow_back_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Vehicle Entry"
+                android:textColor="@color/text_white"
+                android:textSize="22sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:padding="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vehicle Entry"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enter vehicle details"
+                    android:textColor="@color/text_dark"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Vehicle ID -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vehicle ID"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_black"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp"/>
+
+                <EditText
+                    android:id="@+id/etVehicleId"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/edittext_bg"
+                    android:hint="Enter Vehicle ID"
+                    android:padding="15dp"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="@color/text_hint"/>
+
+                <!-- Vehicle Number -->
+
+                <EditText
+                    android:id="@+id/etVehicleNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="15dp"
+                    android:hint="Vehicle Number"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="@color/text_hint"
+                    android:background="@drawable/edittext_bg"
+                    android:padding="15dp"/>
+
+                <!-- Brand -->
+
+                <EditText
+                    android:id="@+id/etBrand"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="15dp"
+                    android:hint="Brand"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="@color/text_hint"
+                    android:background="@drawable/edittext_bg"
+                    android:padding="15dp"/>
+
+                <!-- Model -->
+
+                <EditText
+                    android:id="@+id/etModel"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="15dp"
+                    android:hint="Model"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="@color/text_hint"
+                    android:background="@drawable/edittext_bg"
+                    android:padding="15dp"/>
+
+                <!-- Customer ID -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Customer ID"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_black"
+                    android:textSize="15sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="6dp"/>
+
+                <EditText
+                    android:id="@+id/etCustomerId"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/edittext_bg"
+                    android:hint="Enter Customer ID"
+                    android:padding="15dp"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="@color/text_hint"/>
+
+                <!-- Vehicle Type -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="Vehicle Type"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_black"
+                    android:textSize="16sp"/>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <RadioGroup
+                        android:id="@+id/rgVehicleType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rbTwo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Two Wheeler"
+                            android:textColor="@color/text_black"
+                            android:buttonTint="@color/black"/>
+
+                        <RadioButton
+                            android:id="@+id/rbFour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:text="Four Wheeler"
+                            android:textColor="@color/text_black"
+                            android:buttonTint="@color/black"/>
+
+                        <RadioButton
+                            android:id="@+id/rbLuv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:text="LUV"
+                            android:textColor="@color/text_black"
+                            android:buttonTint="@color/black"/>
+
+                    </RadioGroup>
+
+                </HorizontalScrollView>
+
+                <!-- Fuel Type -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="Fuel Type"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_black"
+                    android:textSize="16sp"/>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <RadioGroup
+                        android:id="@+id/rgFuelType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rbPetrol"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Petrol"
+                            android:textColor="@color/text_black"
+                            android:buttonTint="@color/black"/>
+
+                        <RadioButton
+                            android:id="@+id/rbDiesel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:text="Diesel"
+                            android:textColor="@color/text_black"
+                            android:buttonTint="@color/black"/>
+
+                        <RadioButton
+                            android:id="@+id/rbElectric"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:text="Electric"
+                            android:textColor="@color/text_black"
+                            android:buttonTint="@color/black"/>
+
+                        <RadioButton
+                            android:id="@+id/rbCng"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:text="CNG"
+                            android:textColor="@color/text_black"
+                            android:buttonTint="@color/black"/>
+
+                    </RadioGroup>
+
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <Button
+                        android:id="@+id/btnCancel"
+                        android:layout_width="0dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="Cancel"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_black"
+                        android:backgroundTint="@color/white"/>
+
+                    <Button
+                        android:id="@+id/btnSaveVehicle"
+                        android:layout_width="0dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:text="Save Vehicle"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_white"
+                        android:backgroundTint="@color/button_bg"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
