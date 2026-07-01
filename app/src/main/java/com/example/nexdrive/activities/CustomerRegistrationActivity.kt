@@ -24,12 +24,6 @@ class CustomerRegistrationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_registration)
 
-        initViews()
-        clickListeners()
-    }
-
-    private fun initViews() {
-
         btnBack = findViewById(R.id.btnBack)
 
         etCustomerId = findViewById(R.id.etCustomerId)
@@ -39,9 +33,6 @@ class CustomerRegistrationActivity : AppCompatActivity() {
         etAddress = findViewById(R.id.etAddress)
 
         btnRegisterCustomer = findViewById(R.id.btnRegisterCustomer)
-    }
-
-    private fun clickListeners() {
 
         btnBack.setOnClickListener {
             finish()
@@ -50,13 +41,13 @@ class CustomerRegistrationActivity : AppCompatActivity() {
         btnRegisterCustomer.setOnClickListener {
 
             val customerId = etCustomerId.text.toString().trim()
-            val customerName = etCustomerName.text.toString().trim()
+            val name = etCustomerName.text.toString().trim()
             val mobile = etMobile.text.toString().trim()
             val email = etEmail.text.toString().trim()
             val address = etAddress.text.toString().trim()
 
             if (customerId.isEmpty() ||
-                customerName.isEmpty() ||
+                name.isEmpty() ||
                 mobile.isEmpty() ||
                 email.isEmpty() ||
                 address.isEmpty()
@@ -76,18 +67,12 @@ class CustomerRegistrationActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                clearFields()
+                etCustomerId.text.clear()
+                etCustomerName.text.clear()
+                etMobile.text.clear()
+                etEmail.text.clear()
+                etAddress.text.clear()
             }
         }
-    }
-
-    private fun clearFields() {
-
-        etCustomerId.text.clear()
-        etCustomerName.text.clear()
-        etMobile.text.clear()
-        etEmail.text.clear()
-        etAddress.text.clear()
-
     }
 }

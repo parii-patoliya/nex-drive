@@ -1,11 +1,10 @@
 package com.example.nexdrive.activities
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nexdrive.R
@@ -13,8 +12,6 @@ import com.example.nexdrive.R
 class VehicleEntryActivity : AppCompatActivity() {
 
     private lateinit var btnBack: ImageView
-    private lateinit var btnCancel: Button
-    private lateinit var btnSaveVehicle: Button
 
     private lateinit var etVehicleId: EditText
     private lateinit var etVehicleNumber: EditText
@@ -22,22 +19,29 @@ class VehicleEntryActivity : AppCompatActivity() {
     private lateinit var etModel: EditText
     private lateinit var etCustomerId: EditText
 
-    private lateinit var rgVehicleType: RadioGroup
-    private lateinit var rgFuelType: RadioGroup
+    // Vehicle Type Buttons
+    private lateinit var btnTwoWheeler: Button
+    private lateinit var btnFourWheeler: Button
+    private lateinit var btnLuv: Button
+
+    // Fuel Type Buttons
+    private lateinit var btnPetrol: Button
+    private lateinit var btnDiesel: Button
+    private lateinit var btnElectric: Button
+    private lateinit var btnCng: Button
+
+    // Bottom Buttons
+    private lateinit var btnCancel: Button
+    private lateinit var btnRegisterVehicle: Button
+
+    private var selectedVehicleType = ""
+    private var selectedFuelType = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vehicle_entry)
 
-        initViews()
-        clickListeners()
-    }
-
-    private fun initViews() {
-
         btnBack = findViewById(R.id.btnBack)
-        btnCancel = findViewById(R.id.btnCancel)
-        btnSaveVehicle = findViewById(R.id.btnSaveVehicle)
 
         etVehicleId = findViewById(R.id.etVehicleId)
         etVehicleNumber = findViewById(R.id.etVehicleNumber)
@@ -45,33 +49,72 @@ class VehicleEntryActivity : AppCompatActivity() {
         etModel = findViewById(R.id.etModel)
         etCustomerId = findViewById(R.id.etCustomerId)
 
-        rgVehicleType = findViewById(R.id.rgVehicleType)
-        rgFuelType = findViewById(R.id.rgFuelType)
-    }
+        btnTwoWheeler = findViewById(R.id.btnTwoWheeler)
+        btnFourWheeler = findViewById(R.id.btnFourWheeler)
+        btnLuv = findViewById(R.id.btnLuv)
 
-    private fun clickListeners() {
+        btnPetrol = findViewById(R.id.btnPetrol)
+        btnDiesel = findViewById(R.id.btnDiesel)
+        btnElectric = findViewById(R.id.btnElectric)
+        btnCng = findViewById(R.id.btnCng)
+
+        btnCancel = findViewById(R.id.btnCancel)
+        btnRegisterVehicle = findViewById(R.id.btnRegisterVehicle)
 
         btnBack.setOnClickListener {
             finish()
         }
 
-        btnCancel.setOnClickListener {
-            clearFields()
+        // Vehicle Type
+        btnTwoWheeler.setOnClickListener {
+            selectedVehicleType = "Two Wheeler"
+            updateVehicleButtons()
         }
 
-        btnSaveVehicle.setOnClickListener {
+        btnFourWheeler.setOnClickListener {
+            selectedVehicleType = "Four Wheeler"
+            updateVehicleButtons()
+        }
 
-            val vehicleId = etVehicleId.text.toString().trim()
-            val vehicleNumber = etVehicleNumber.text.toString().trim()
-            val brand = etBrand.text.toString().trim()
-            val model = etModel.text.toString().trim()
-            val customerId = etCustomerId.text.toString().trim()
+        btnLuv.setOnClickListener {
+            selectedVehicleType = "LUV"
+            updateVehicleButtons()
+        }
 
-            if (vehicleId.isEmpty() ||
-                vehicleNumber.isEmpty() ||
-                brand.isEmpty() ||
-                model.isEmpty() ||
-                customerId.isEmpty()
+        // Fuel Type
+        btnPetrol.setOnClickListener {
+            selectedFuelType = "Petrol"
+            updateFuelButtons()
+        }
+
+        btnDiesel.setOnClickListener {
+            selectedFuelType = "Diesel"
+            updateFuelButtons()
+        }
+
+        btnElectric.setOnClickListener {
+            selectedFuelType = "Electric"
+            updateFuelButtons()
+        }
+
+        btnCng.setOnClickListener {
+            selectedFuelType = "CNG"
+            updateFuelButtons()
+        }
+
+        btnCancel.setOnClickListener {
+            finish()
+        }
+
+        btnRegisterVehicle.setOnClickListener {
+
+            if (etVehicleId.text.isEmpty() ||
+                etVehicleNumber.text.isEmpty() ||
+                etBrand.text.isEmpty() ||
+                etModel.text.isEmpty() ||
+                etCustomerId.text.isEmpty() ||
+                selectedVehicleType.isEmpty() ||
+                selectedFuelType.isEmpty()
             ) {
 
                 Toast.makeText(
@@ -80,54 +123,89 @@ class VehicleEntryActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                return@setOnClickListener
-            }
+            } else {
 
-            if (rgVehicleType.checkedRadioButtonId == -1) {
                 Toast.makeText(
                     this,
-                    "Please select Vehicle Type",
+                    "Vehicle Registered Successfully",
                     Toast.LENGTH_SHORT
                 ).show()
-                return@setOnClickListener
             }
-
-            if (rgFuelType.checkedRadioButtonId == -1) {
-                Toast.makeText(
-                    this,
-                    "Please select Fuel Type",
-                    Toast.LENGTH_SHORT
-                ).show()
-                return@setOnClickListener
-            }
-
-            val vehicleType = findViewById<RadioButton>(
-                rgVehicleType.checkedRadioButtonId
-            ).text.toString()
-
-            val fuelType = findViewById<RadioButton>(
-                rgFuelType.checkedRadioButtonId
-            ).text.toString()
-
-            Toast.makeText(
-                this,
-                "Vehicle Saved Successfully",
-                Toast.LENGTH_SHORT
-            ).show()
-
-            clearFields()
         }
     }
 
-    private fun clearFields() {
+    private fun updateVehicleButtons() {
 
-        etVehicleId.text.clear()
-        etVehicleNumber.text.clear()
-        etBrand.text.clear()
-        etModel.text.clear()
-        etCustomerId.text.clear()
+        resetVehicleButtons()
 
-        rgVehicleType.clearCheck()
-        rgFuelType.clearCheck()
+        when (selectedVehicleType) {
+
+            "Two Wheeler" -> {
+                btnTwoWheeler.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.BLACK))
+                btnTwoWheeler.setTextColor(Color.WHITE)
+            }
+
+            "Four Wheeler" -> {
+                btnFourWheeler.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.BLACK))
+                btnFourWheeler.setTextColor(Color.WHITE)
+            }
+
+            "LUV" -> {
+                btnLuv.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.BLACK))
+                btnLuv.setTextColor(Color.WHITE)
+            }
+        }
+    }
+
+    private fun updateFuelButtons() {
+
+        resetFuelButtons()
+
+        when (selectedFuelType) {
+
+            "Petrol" -> {
+                btnPetrol.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.BLACK))
+                btnPetrol.setTextColor(Color.WHITE)
+            }
+
+            "Diesel" -> {
+                btnDiesel.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.BLACK))
+                btnDiesel.setTextColor(Color.WHITE)
+            }
+
+            "Electric" -> {
+                btnElectric.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.BLACK))
+                btnElectric.setTextColor(Color.WHITE)
+            }
+
+            "CNG" -> {
+                btnCng.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.BLACK))
+                btnCng.setTextColor(Color.WHITE)
+            }
+        }
+    }
+
+    private fun resetVehicleButtons() {
+
+        btnTwoWheeler.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("#EEEEEE")))
+        btnFourWheeler.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("#EEEEEE")))
+        btnLuv.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("#EEEEEE")))
+
+        btnTwoWheeler.setTextColor(Color.BLACK)
+        btnFourWheeler.setTextColor(Color.BLACK)
+        btnLuv.setTextColor(Color.BLACK)
+    }
+
+    private fun resetFuelButtons() {
+
+        btnPetrol.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("#EEEEEE")))
+        btnDiesel.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("#EEEEEE")))
+        btnElectric.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("#EEEEEE")))
+        btnCng.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("#EEEEEE")))
+
+        btnPetrol.setTextColor(Color.BLACK)
+        btnDiesel.setTextColor(Color.BLACK)
+        btnElectric.setTextColor(Color.BLACK)
+        btnCng.setTextColor(Color.BLACK)
     }
 }

@@ -6,7 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.example.nexdrive.R
-
+import com.example.nexdrive.activities.VehicleEntryActivity
 class ReceptionistDashboardActivity : AppCompatActivity() {
 
     private lateinit var cardCustomer: CardView

@@ -1,10 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AppointmentBookingActivity">
+    android:background="@color/background">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/header_bg"
+            android:paddingHorizontal="15dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/outline_arrow_back_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Appointment Booking"
+                android:textColor="@color/text_white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+        <!-- Card -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/card_bg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="22dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Appointment Booking"
+                    android:textColor="@color/text_black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enter appointment details"
+                    android:textColor="@color/text_dark"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Appointment ID -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Appointment ID"
+                    android:textColor="@color/text_black"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/etAppointmentId"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/edittext_bg"
+                    android:hint="Enter Appointment ID"
+                    android:textColorHint="@color/text_hint"
+                    android:padding="15dp"
+                    android:textColor="@color/text_black"/>
+
+                <!-- Customer ID -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Customer ID"
+                    android:textColor="@color/text_black"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/etCustomerId"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/edittext_bg"
+                    android:hint="Enter Customer ID"
+                    android:textColorHint="@color/text_hint"
+                    android:padding="15dp"
+                    android:textColor="@color/text_black"/>
+
+                <!-- Vehicle ID -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vehicle ID"
+                    android:textColor="@color/text_black"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/etVehicleId"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/edittext_bg"
+                    android:hint="Enter Vehicle ID"
+                    android:textColorHint="@color/text_hint"
+                    android:padding="15dp"
+                    android:textColor="@color/text_black"/>
+
+                <!-- Date -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Appointment Date"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_black"/>
+
+                <EditText
+                    android:id="@+id/etDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/edittext_bg"
+                    android:hint="Select Date"
+                    android:textColorHint="@color/text_hint"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:padding="15dp"
+                    android:textColor="@color/text_black"/>
+
+                <!-- Time -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Appointment Time"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_black"/>
+
+                <EditText
+                    android:id="@+id/etTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/edittext_bg"
+                    android:hint="Select Time"
+                    android:textColorHint="@color/text_hint"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:padding="15dp"
+                    android:textColor="@color/text_black"/>
+
+                <!-- Service Type -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Service Type"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_black"/>
+
+                <Spinner
+                    android:id="@+id/spServiceType"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/edittext_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:spinnerMode="dropdown" />
+
+                <!-- Problem Description -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Problem Description"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_black"/>
+
+                <EditText
+                    android:id="@+id/etProblem"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/edittext_bg"
+                    android:gravity="top"
+                    android:hint="Enter Problem Description"
+                    android:textColorHint="@color/text_hint"
+                    android:inputType="textMultiLine"
+                    android:padding="15dp"
+                    android:textColor="@color/text_black"/>
+
+                <!-- Book Appointment Button -->
+
+                <Button
+                    android:id="@+id/btnBookAppointment"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="@color/button_bg"
+                    android:text="Book Appointment"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
